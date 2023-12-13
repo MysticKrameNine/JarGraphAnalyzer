@@ -6,7 +6,7 @@ import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public static class ClassAnalyzer {
+public class ClassAnalyzer {
     private static final Logger logger = Logger.getLogger(ClassAnalyzer.class.getName());
     private final Map<String, ClassInfo> classInfoTable = new Hashtable<>();
 
@@ -54,22 +54,21 @@ public static class ClassAnalyzer {
 
     // A simple class to store information about a class
     static class ClassInfo {
-        private static class ClassInfo {
-            private final String className;
-            private final Class<?> clazz;
-            private final long methodCount;
-            private final long attributeCount;
+        private final String className;
+        private final Class<?> clazz;
+        private final long methodCount;
+        private final long attributeCount;
 
-            public ClassInfo(String className, Class<?> clazz, long methodCount, long attributeCount) {
-                this.className = className;
-                this.clazz = clazz;
-                this.methodCount = methodCount;
-                this.attributeCount = attributeCount;
-            }
+        public ClassInfo(String className, Class<?> clazz, long methodCount, long attributeCount) {
+            this.className = className;
+            this.clazz = clazz;
+            this.methodCount = methodCount;
+            this.attributeCount = attributeCount;
+        }
 
-            public String toCsvString() {
-                return String.format("%s,%s,%d,%d",
-                        className, clazz, methodCount, attributeCount);
-            }
+        public String toCsvString() {
+            return String.format("%s,%s,%d,%d",
+                    className, clazz, methodCount, attributeCount);
         }
     }
+}
